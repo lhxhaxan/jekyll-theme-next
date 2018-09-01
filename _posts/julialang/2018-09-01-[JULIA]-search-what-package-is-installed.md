@@ -136,7 +136,7 @@ For work with julia, we need to prase it to `Dict` by `TMOL.parsefile`:
 manifest = TOML.parsefile(Pkg.envdir()*"/v$(VERSION.major).$(VERSION.minor)/Manifest.toml")
 ```
 output in `REPL`:
-```julia
+```
 Dict{AbstractString,Any} with 50 entries:
   "Pkg"               => Dict{AbstractString,Any}[Dict("deps"=>["Dates", "LibGit2", "Markdown", "Printf", "REPL", "Random", "SHA", "UUIDs"],"…
   "Juno"              => Dict{AbstractString,Any}[Dict("deps"=>["Base64", "Logging", "Media", "Profile", "Test"],"git-tree-sha1"=>"f2d5537197…
