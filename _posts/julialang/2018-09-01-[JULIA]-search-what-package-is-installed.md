@@ -183,7 +183,7 @@ function pkgversion(pkgname::String)
  if haskey(manifest, pkgname) == false
   error("There is not pakckage \"$pkgname\" installed");
  elseif haskey(manifest[pkgname][], "version") == false
-  error("No version record in pakckage \"$pkgname\"")
+  error("No version record in pakckage \"$pkgname\"");
  else
   return manifest[pkgname][]["version"];
  end
