@@ -6,7 +6,7 @@ categories:
  - JuliaLanguage
 tags:[julia, package, toml]
 ---
-
+# One of the way to search what package is installed in julia(version ≥ 0.7.0)
  Sometimes we need to konw a package is installed or not. Than we do something after in the code.`Pkg.installed()`can tell us about this, but it's not intact. There is a way to this with PKG.jl TOML.jl
 
 ## Check TOML.jl is installed or not
