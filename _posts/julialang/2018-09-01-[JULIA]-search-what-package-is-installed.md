@@ -1,13 +1,14 @@
 ---
-title: One of the way to search what package is installed in julia(version ≥ 0.7.0)
+title: q
 date: 2018-09-01 23：00：00
 description: Sometimes we need to konw a package is installed or not. Than we do something after in the code.'Pkg.installed()'can tell us about this, but it's not intact. There is a way to this with PKG.jl TOML.jl
 categories:
- - JuliaLanguage
+ - Julia
 tags:[julia, package, toml]
 ---
-
+One of the way to search what package is installed in julia(version ≥ 0.7.0)
  Sometimes we need to konw a package is installed or not. Than we do something after in the code.`Pkg.installed()`can tell us about this, but it's not intact.
+
  There is a way to do this with PKG.jl TOML.jl in julia(version ≥ 0.7.0)
 
 
@@ -67,7 +68,7 @@ Success:
   Updating `C:\Users\haxan\.julia\environments\v1.0\Manifest.toml`
   [191fdcea] + TOML v0.4.0 #master (https://github.com/wildart/TOML.jl.git)
 ```
-### About Manifest.toml
+## About Manifest.toml
 >Manifest file: a file in the root directory of a project, named `Manifest.toml` describing a complete dependency graph and exact versions of each package and library used by a project.
 
 We can find the path in `REPL` use `Pkg.envdir()` (when use this function to check, you need to `using Pkg` first:
@@ -202,7 +203,7 @@ Stacktrace:
  [3] top-level scope at none:0
  ```
 
-### At last
+## At last
 
 In fact, Julia provides [a way](https://docs.julialang.org/en/stable/stdlib/Pkg/#Adding-dependencies-to-the-project-1) to inline the required packages.
 It add packages to the project’s `Project.toml` file. When `Pkg.add`your project it also install those
