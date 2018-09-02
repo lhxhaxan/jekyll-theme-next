@@ -80,7 +80,7 @@ julia> Pkg.envdir()
 windows：
 ```julia
 julia> Pkg.envdir()
-"C:\\Users\\haxan\\.julia\\environments"
+"C:\\\\Users\\\\haxan\\\\.julia\\\\environments"
 ```
 But it is not intact. There are different folders for your installed Julia version.(`julia v1.0.0`=>`v1.0`)
 
