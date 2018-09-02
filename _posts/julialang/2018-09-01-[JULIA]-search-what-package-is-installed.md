@@ -207,4 +207,6 @@ Stacktrace:
 
 In fact, Julia provides [a way](https://docs.julialang.org/en/stable/stdlib/Pkg/#Adding-dependencies-to-the-project-1) to inline the required packages.
 It add packages to the project’s `Project.toml` file. When `Pkg.add`your project it also install those
-packages.By the way [`Pkg.instantiate()`](https://docs.julialang.org/en/stable/stdlib/Pkg/#Pkg.instantiate)can install packages which mark in `Project.toml`.
+packages.
+
+By the way [`Pkg.instantiate()`](https://docs.julialang.org/en/stable/stdlib/Pkg/#Pkg.instantiate)can install packages which mark in `Project.toml`.
