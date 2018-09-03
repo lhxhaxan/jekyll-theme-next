@@ -7,8 +7,7 @@ categories:
 tags: [julia, package, toml]
 ---
 
- Sometimes we need to konw a package is installed or not before we do something in the code.
- `Pkg.installed()`can tell us about this, but it's not intact.
+ Sometimes we need to konw a package is installed or not before we do something in the code. `Pkg.installed()`can tell us about this, but it's not intact. We want know more, know aobut required packages.
 
  So I make a way to do this with `PKG.jl` and `TOML.jl` in julia(version ≥ 0.7.0).
 
@@ -22,7 +21,7 @@ When installed, you can see it in the `REPL` Like this:
 ```julia
 [191fdcea] TOML v0.4.0
 ```
-Now, you must make sure the the version greater than or equa `v0.4.0`. If the version less than taht, the package will make a error when `using`:
+Now, you must make sure the version is greater than or equal `v0.4.0`. If the version is less than that, the package will make a error when `using`:
 
 ```julia
 julia> using TOML
@@ -54,8 +53,10 @@ You can remove it like this:
 ```
 
 ## Install the newer TOML.jl
+
 The `TOML.jl` poject is [here](https://github.com/wildart/TOML.jl).
 And you can install it like this:
+
 ```julia
 (v1.0) pkg> add https://github.com/wildart/TOML.jl.git
 ```
@@ -73,6 +74,7 @@ Success:
 >Manifest file: a file in the root directory of a project, named `Manifest.toml` describing a complete dependency graph and exact versions of each package and library used by a project.
 
 We can find the path in `REPL` use `Pkg.envdir()` (when use this function to check, you need to `using Pkg` first:
+
 linux：
 ```julia
 julia> Pkg.envdir()
@@ -132,7 +134,7 @@ Now we get the full path:
 ```julia
 Pkg.envdir()*"/v$(VERSION.major).$(VERSION.minor)/Manifest.toml"
 ```
-For work with julia, we need to prase it to `Dict` by `TMOL.parsefile`:
+To make it wrok in julia, we need to parse it to `Dict` by `TMOL.parsefile`:
 ```julia
 manifest = TOML.parsefile(Pkg.envdir()*"/v$(VERSION.major).$(VERSION.minor)/Manifest.toml")
 ```
@@ -166,7 +168,7 @@ Dict{AbstractString,Any} with 50 entries:
   "Conda"             => Dict{AbstractString,Any}[Dict("deps"=>["Compat", "JSON", "VersionParsing"],"git-tree-sha1"=>"a47f9a2c7b80095e6a93553…
   ⋮                   => ⋮
 ```
-From now we can check the version of any package is installed:
+From now on, we can check the version of any installed package:
 ```julia
 julia> manifest["PyCall"][]["version"]
 "1.18.3"
@@ -191,13 +193,13 @@ function pkgversion(pkgname::String)
 end
  ```
 
- Test it:
+Let's test it:
 ```julia
 julia> pkgversion("PyCall")
 "1.18.3"
 
-julia> pkgversion("PyCalls")
-ERROR: There is not pakckage "PyCalls" installed
+julia> pkgversion("PyNothing")
+ERROR: There is not pakckage "PyNothing" installed
 Stacktrace:
  [1] error(::String) at .\error.jl:33
  [2] pkgversion(::String) at .\REPL[28]:3
@@ -207,7 +209,6 @@ Stacktrace:
 ## At last
 
 In fact, Julia provides [a way](https://docs.julialang.org/en/stable/stdlib/Pkg/#Adding-dependencies-to-the-project-1) to inline the required packages.
-It add packages to the project’s `Project.toml` file. When `Pkg.add`your project it also install those
-packages.
+It adds those packages to the project’s `Project.toml` file. When `Pkg.add`your project it also installs those packages.
 
 By the way [`Pkg.instantiate()`](https://docs.julialang.org/en/stable/stdlib/Pkg/#Pkg.instantiate)can install packages which mark in `Project.toml`.
