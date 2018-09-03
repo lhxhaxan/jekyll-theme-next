@@ -73,7 +73,7 @@ Success:
 ## About Manifest.toml
 >Manifest file: a file in the root directory of a project, named `Manifest.toml` describing a complete dependency graph and exact versions of each package and library used by a project.
 
-We can find the path in `REPL` use `Pkg.envdir()` (when use this function to check, you need to `using Pkg` first:
+We can find the path in `REPL` use `Pkg.envdir()` when use this function to check, you need to `using Pkg` first:
 
 linux：
 ```julia
